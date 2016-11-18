@@ -16,36 +16,42 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+/**
+ * 填写网银网捷贷笔数、网银端笔数、网银端笔数三个笔数[即K、O、S列]
+ * @author kk
+ *
+ */
 public class GetDataByExcel {
 	// 目标文件所在的地址、目标文件名、目标文件所要写的sheet
-	static String TARGET_EXCEL_ADDRESS = "E:\\工作相关\\小林林要提数\\20161114";
-	static String TARGET_EXCEL = "金融服务平台（个人）投产数据统计-汇总1110-1111.et";
-	static String TARGET_EXCEL_SHEET_NAME = "重点产品交易数据";
+	private static String TARGET_EXCEL_ADDRESS = "E:\\工作相关\\小林林要提数\\20161124";
+	private static String TARGET_EXCEL = "金融服务平台（个人）投产数据统计-汇总1117-1123.et";
+	private static String TARGET_EXCEL_SHEET_NAME = "重点产品交易数据";
 
 	// 源文件所在的地址、源文件所要读的Sheet
-	static String SOURCE_EXCEL_ADDRESS = "E:\\工作相关\\小林林要提数\\20161114";
-	static String SOURCE_EXCEL_SHEET_NAME = "个人网银交易量明细";
+	private static String SOURCE_EXCEL_ADDRESS = "E:\\工作相关\\小林林要提数\\20161124";
+	private static String SOURCE_EXCEL_SHEET_NAME = "个人网银交易量明细";
 
-	static String SPACE = "";
-	static String key = SPACE;
-	static String value = SPACE;
+	private static String SPACE = "";
+	private static String key = SPACE;
+	private static String value = SPACE;
 
-	static String FILE_SEPARATOR = System.getProperty("file.separator");
+	private static String FILE_SEPARATOR = System.getProperty("file.separator");
 	
 	/**
-	 * @param args
+	 * 这里只对文件未关闭时抛出的编译时异常进行处理，其他异常不做处理
+	 * @param args 控制台出入参数
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		long beginTime = System.currentTimeMillis();
-		args = new String[] { "电子银行应用系统交易统计 2016年11月09日.xls",
-				"电子银行应用系统交易统计 2016年11月10日.xls", 
-				"电子银行应用系统交易统计 2016年11月11日.xls"
-				/*,"电子银行应用系统交易统计 2016年11月01日.xls", 
-				"电子银行应用系统交易统计 2016年11月02日.xls",
-				"电子银行应用系统交易统计 2016年11月03日.xls", 
-				"电子银行应用系统交易统计 2016年11月04日.xls" */};
+		args = new String[] { "电子银行应用系统交易统计 2016年11月12日.xls",
+				"电子银行应用系统交易统计 2016年11月13日.xls", 
+				"电子银行应用系统交易统计 2016年11月14日.xls",
+				"电子银行应用系统交易统计 2016年11月15日.xls", 
+				"电子银行应用系统交易统计 2016年11月16日.xls"/*,
+				"电子银行应用系统交易统计 2016年11月17日.xls", 
+				"电子银行应用系统交易统计 2016年11月18日.xls" */};
 		Workbook target = new HSSFWorkbook(new FileInputStream(TARGET_EXCEL_ADDRESS + FILE_SEPARATOR + TARGET_EXCEL));
 		Sheet targetSheet = target.getSheet(TARGET_EXCEL_SHEET_NAME);
 		for (int num = 0; num < args.length; num++) {

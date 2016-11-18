@@ -13,23 +13,25 @@ import java.util.List;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+
 /**
- * 填寫个人网银、个人掌银、注册量、软token新签约的4種筆數
+ * 填写个人网银、个人掌银、注册量、软token新签约的4种笔数[即BCDE列]
+ * 以及快e宝中网银端交易额[即P列]
  * @author kk
  *
  */
 public class GetDataByTxt {
 	// 目标文件所在的地址、目标文件名、目标文件所要写的sheet
-	static String TARGET_EXCEL_ADDRESS = "E:\\工作相关\\小林林要提数\\20161114";
-	static String TARGET_EXCEL = "金融服务平台（个人）投产数据统计-汇总1110-1111.et";
-	static String TARGET_EXCEL_SHEET_NAME = "重点产品交易数据";
+	private static String TARGET_EXCEL_ADDRESS = "E:\\工作相关\\小林林要提数\\20161124";
+	private static String TARGET_EXCEL = "金融服务平台（个人）投产数据统计-汇总1117-1123.et";
+	private static String TARGET_EXCEL_SHEET_NAME = "重点产品交易数据";
 	
 	// 读取sql脚本查询出来的数据源文件地址，及源文件名
-	static String SQL_ADDRESS = "E:\\工作相关\\小林林要提数\\20161114\\kk";
-	static String SQL_FORBCDE = "kk_20161114.out";
-	static String[] SQL_FORP = {"kk_20161114_5.out", "kk_20161114_6.out", "kk_20161114_7.out", "kk_20161114_8.out"};
+	private static String SQL_ADDRESS = "E:\\工作相关\\小林林要提数\\20161124\\kk";
+	private static String SQL_FORBCDE = "kk_20161124.out";
+	private static String[] SQL_FORP = {"kk_20161124_5.out", "kk_20161124_6.out", "kk_20161124_7.out", "kk_20161124_8.out"};
 	
-	static String FILE_SEPARATOR = System.getProperty("file.separator");
+	private static String FILE_SEPARATOR = System.getProperty("file.separator");
 	
 	@SuppressWarnings({ "unchecked", "rawtypes"})
 	public static void main(String[] args) {
