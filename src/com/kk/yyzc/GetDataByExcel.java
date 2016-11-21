@@ -17,19 +17,19 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 /**
- * ÌîĞ´ÍøÒøÍø½İ´û±ÊÊı¡¢ÍøÒø¶Ë±ÊÊı¡¢ÍøÒø¶Ë±ÊÊıÈı¸ö±ÊÊı[¼´K¡¢O¡¢SÁĞ]
+ * å¡«å†™ç½‘é“¶ç½‘æ·è´·ç¬”æ•°ã€ç½‘é“¶ç«¯ç¬”æ•°ã€ç½‘é“¶ç«¯ç¬”æ•°ä¸‰ä¸ªç¬”æ•°[å³Kã€Oã€Såˆ—]
  * @author kk
  *
  */
 public class GetDataByExcel {
-	// Ä¿±êÎÄ¼şËùÔÚµÄµØÖ·¡¢Ä¿±êÎÄ¼şÃû¡¢Ä¿±êÎÄ¼şËùÒªĞ´µÄsheet
-	private static String TARGET_EXCEL_ADDRESS = "E:\\¹¤×÷Ïà¹Ø\\Ğ¡ÁÖÁÖÒªÌáÊı\\20161124";
-	private static String TARGET_EXCEL = "½ğÈÚ·şÎñÆ½Ì¨£¨¸öÈË£©Í¶²úÊı¾İÍ³¼Æ-»ã×Ü1117-1123.et";
-	private static String TARGET_EXCEL_SHEET_NAME = "ÖØµã²úÆ·½»Ò×Êı¾İ";
+	// ç›®æ ‡æ–‡ä»¶æ‰€åœ¨çš„åœ°å€ã€ç›®æ ‡æ–‡ä»¶åã€ç›®æ ‡æ–‡ä»¶æ‰€è¦å†™çš„sheet
+	private static String TARGET_EXCEL_ADDRESS = "E:\\å·¥ä½œç›¸å…³\\å°æ—æ—è¦ææ•°\\20161124";
+	private static String TARGET_EXCEL = "é‡‘èæœåŠ¡å¹³å°ï¼ˆä¸ªäººï¼‰æŠ•äº§æ•°æ®ç»Ÿè®¡-æ±‡æ€»1117-1123.et";
+	private static String TARGET_EXCEL_SHEET_NAME = "é‡ç‚¹äº§å“äº¤æ˜“æ•°æ®";
 
-	// Ô´ÎÄ¼şËùÔÚµÄµØÖ·¡¢Ô´ÎÄ¼şËùÒª¶ÁµÄSheet
-	private static String SOURCE_EXCEL_ADDRESS = "E:\\¹¤×÷Ïà¹Ø\\Ğ¡ÁÖÁÖÒªÌáÊı\\20161124";
-	private static String SOURCE_EXCEL_SHEET_NAME = "¸öÈËÍøÒø½»Ò×Á¿Ã÷Ï¸";
+	// æºæ–‡ä»¶æ‰€åœ¨çš„åœ°å€ã€æºæ–‡ä»¶æ‰€è¦è¯»çš„Sheet
+	private static String SOURCE_EXCEL_ADDRESS = "E:\\å·¥ä½œç›¸å…³\\å°æ—æ—è¦ææ•°\\20161124";
+	private static String SOURCE_EXCEL_SHEET_NAME = "ä¸ªäººç½‘é“¶äº¤æ˜“é‡æ˜ç»†";
 
 	private static String SPACE = "";
 	private static String key = SPACE;
@@ -38,20 +38,20 @@ public class GetDataByExcel {
 	private static String FILE_SEPARATOR = System.getProperty("file.separator");
 	
 	/**
-	 * ÕâÀïÖ»¶ÔÎÄ¼şÎ´¹Ø±ÕÊ±Å×³öµÄ±àÒëÊ±Òì³£½øĞĞ´¦Àí£¬ÆäËûÒì³£²»×ö´¦Àí
-	 * @param args ¿ØÖÆÌ¨³öÈë²ÎÊı
+	 * è¿™é‡Œåªå¯¹æ–‡ä»¶æœªå…³é—­æ—¶æŠ›å‡ºçš„ç¼–è¯‘æ—¶å¼‚å¸¸è¿›è¡Œå¤„ç†ï¼Œå…¶ä»–å¼‚å¸¸ä¸åšå¤„ç†
+	 * @param args æ§åˆ¶å°å‡ºå…¥å‚æ•°
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		long beginTime = System.currentTimeMillis();
-		args = new String[] { "µç×ÓÒøĞĞÓ¦ÓÃÏµÍ³½»Ò×Í³¼Æ 2016Äê11ÔÂ12ÈÕ.xls",
-				"µç×ÓÒøĞĞÓ¦ÓÃÏµÍ³½»Ò×Í³¼Æ 2016Äê11ÔÂ13ÈÕ.xls", 
-				"µç×ÓÒøĞĞÓ¦ÓÃÏµÍ³½»Ò×Í³¼Æ 2016Äê11ÔÂ14ÈÕ.xls",
-				"µç×ÓÒøĞĞÓ¦ÓÃÏµÍ³½»Ò×Í³¼Æ 2016Äê11ÔÂ15ÈÕ.xls", 
-				"µç×ÓÒøĞĞÓ¦ÓÃÏµÍ³½»Ò×Í³¼Æ 2016Äê11ÔÂ16ÈÕ.xls"/*,
-				"µç×ÓÒøĞĞÓ¦ÓÃÏµÍ³½»Ò×Í³¼Æ 2016Äê11ÔÂ17ÈÕ.xls", 
-				"µç×ÓÒøĞĞÓ¦ÓÃÏµÍ³½»Ò×Í³¼Æ 2016Äê11ÔÂ18ÈÕ.xls" */};
+		args = new String[] { "ç”µå­é“¶è¡Œåº”ç”¨ç³»ç»Ÿäº¤æ˜“ç»Ÿè®¡ 2016å¹´11æœˆ12æ—¥.xls",
+				"ç”µå­é“¶è¡Œåº”ç”¨ç³»ç»Ÿäº¤æ˜“ç»Ÿè®¡ 2016å¹´11æœˆ13æ—¥.xls", 
+				"ç”µå­é“¶è¡Œåº”ç”¨ç³»ç»Ÿäº¤æ˜“ç»Ÿè®¡ 2016å¹´11æœˆ14æ—¥.xls",
+				"ç”µå­é“¶è¡Œåº”ç”¨ç³»ç»Ÿäº¤æ˜“ç»Ÿè®¡ 2016å¹´11æœˆ15æ—¥.xls", 
+				"ç”µå­é“¶è¡Œåº”ç”¨ç³»ç»Ÿäº¤æ˜“ç»Ÿè®¡ 2016å¹´11æœˆ16æ—¥.xls"/*,
+				"ç”µå­é“¶è¡Œåº”ç”¨ç³»ç»Ÿäº¤æ˜“ç»Ÿè®¡ 2016å¹´11æœˆ17æ—¥.xls", 
+				"ç”µå­é“¶è¡Œåº”ç”¨ç³»ç»Ÿäº¤æ˜“ç»Ÿè®¡ 2016å¹´11æœˆ18æ—¥.xls" */};
 		Workbook target = new HSSFWorkbook(new FileInputStream(TARGET_EXCEL_ADDRESS + FILE_SEPARATOR + TARGET_EXCEL));
 		Sheet targetSheet = target.getSheet(TARGET_EXCEL_SHEET_NAME);
 		for (int num = 0; num < args.length; num++) {
@@ -88,9 +88,9 @@ public class GetDataByExcel {
 			Set<Entry<String, String>> set = map.entrySet();
 			Iterator<Entry<String, String>> itSet = set.iterator();
 			if((maxRowIx - minRowIx + 1) == map.size()) {
-				System.out.print(args[num] + "¶ÁÈ¡³É¹¦");
+				System.out.print(args[num] + "è¯»å–æˆåŠŸ");
 			} else {
-				System.out.println("¶ÁÈ¡´æÔÚÎÊÌâÇë¼ì²é" + args[num]);
+				System.out.println("è¯»å–å­˜åœ¨é—®é¢˜è¯·æ£€æŸ¥" + args[num]);
 			}
 
 			int wangJieDai = 0;
@@ -100,24 +100,24 @@ public class GetDataByExcel {
 				Entry<String, String> entry = itSet.next();
 				String key = entry.getKey();
 				String value = entry.getValue();
-				if (key.contains("Íø½İ´û")) {
+				if (key.contains("ç½‘æ·è´·")) {
 					wangJieDai += Integer.parseInt(value);
-				} else if (key.contains("¿ìÒç±¦")) {
+				} else if (key.contains("å¿«æº¢å®")) {
 					kaiYiBao += Integer.parseInt(value);
-				} else if (key.contains("´ó¶î´æµ¥") && !key.contains("´ó¶î´æµ¥-¿ª»§")) {
+				} else if (key.contains("å¤§é¢å­˜å•") && !key.contains("å¤§é¢å­˜å•-å¼€æˆ·")) {
 					daErCunDan += Integer.parseInt(value);
 				}
 			}
-			System.out.println(MessageFormat.format("£¬ÆäÖĞÍø½İ´ûÓĞ{0}±Ê£¬¿ìÒç±¦ÓĞ{1}±Ê£¬´ó¶î´æµ¥ÓĞ{2}±Ê", wangJieDai, kaiYiBao, daErCunDan));
+			System.out.println(MessageFormat.format("ï¼Œå…¶ä¸­ç½‘æ·è´·æœ‰{0}ç¬”ï¼Œå¿«æº¢å®æœ‰{1}ç¬”ï¼Œå¤§é¢å­˜å•æœ‰{2}ç¬”", wangJieDai, kaiYiBao, daErCunDan));
 
-			// ½«¼ÆËã³öµÄÊı¾İĞ´Èëµ½Ä¿±êÎÄ¼şÖĞ
+			// å°†è®¡ç®—å‡ºçš„æ•°æ®å†™å…¥åˆ°ç›®æ ‡æ–‡ä»¶ä¸­
 			try {
 				targetSheet.getRow(2 + num).createCell(10).setCellValue(wangJieDai);
 				targetSheet.getRow(2 + num).createCell(14).setCellValue(kaiYiBao);
 				targetSheet.getRow(2 + num).createCell(18).setCellValue(daErCunDan);
 				target.write(new FileOutputStream(TARGET_EXCEL_ADDRESS + FILE_SEPARATOR + TARGET_EXCEL));
 			} catch (FileNotFoundException e) {
-				System.out.println("Çë¹Ø±Õ" + TARGET_EXCEL + "ÔÚ½øĞĞ²Ù×÷£¡");
+				System.out.println("è¯·å…³é—­" + TARGET_EXCEL + "åœ¨è¿›è¡Œæ“ä½œï¼");
 				e.printStackTrace();
 				System.exit(0);
 			} catch (IOException e) {
@@ -125,6 +125,6 @@ public class GetDataByExcel {
 			}
 		}
 		long endTime = System.currentTimeMillis();
-		System.out.println("Ğ´Èë³É¹¦£¡ÓÃÊ±£º" + (endTime - beginTime) / 1000.0 + "Ãë");
+		System.out.println("å†™å…¥æˆåŠŸï¼ç”¨æ—¶ï¼š" + (endTime - beginTime) / 1000.0 + "ç§’");
 	}
 }

@@ -13,7 +13,7 @@ public class BigDecimalTest {
 		float f2 = 0.011f;
 		System.out.println(f1 + f2);
 		
-		// Ê¹ÓÃBigDecimal×¢Òâµã²»ÄÜÓÃÔ­ÉúµÄÊı¾İ£¬Ö»ÄÜÊ¹ÓÃStringÀàĞÍÀ´×÷ÎªĞĞ²Î
+		// ä½¿ç”¨BigDecimalæ³¨æ„ç‚¹ä¸èƒ½ç”¨åŸç”Ÿçš„æ•°æ®ï¼Œåªèƒ½ä½¿ç”¨Stringç±»å‹æ¥ä½œä¸ºè¡Œå‚
 		BigDecimal bd3 = new BigDecimal(0.05f);
 		BigDecimal bd4 = new BigDecimal(0.011f);
 		bd3 = bd3.add(bd4);

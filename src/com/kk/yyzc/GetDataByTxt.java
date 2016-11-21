@@ -15,19 +15,19 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 /**
- * ÌîĞ´¸öÈËÍøÒø¡¢¸öÈËÕÆÒø¡¢×¢²áÁ¿¡¢ÈítokenĞÂÇ©Ô¼µÄ4ÖÖ±ÊÊı[¼´BCDEÁĞ]
- * ÒÔ¼°¿ìe±¦ÖĞÍøÒø¶Ë½»Ò×¶î[¼´PÁĞ]
+ * å¡«å†™ä¸ªäººç½‘é“¶ã€ä¸ªäººæŒé“¶ã€æ³¨å†Œé‡ã€è½¯tokenæ–°ç­¾çº¦çš„4ç§ç¬”æ•°[å³BCDEåˆ—]
+ * ä»¥åŠå¿«eå®ä¸­ç½‘é“¶ç«¯äº¤æ˜“é¢[å³Påˆ—]
  * @author kk
  *
  */
 public class GetDataByTxt {
-	// Ä¿±êÎÄ¼şËùÔÚµÄµØÖ·¡¢Ä¿±êÎÄ¼şÃû¡¢Ä¿±êÎÄ¼şËùÒªĞ´µÄsheet
-	private static String TARGET_EXCEL_ADDRESS = "E:\\¹¤×÷Ïà¹Ø\\Ğ¡ÁÖÁÖÒªÌáÊı\\20161124";
-	private static String TARGET_EXCEL = "½ğÈÚ·şÎñÆ½Ì¨£¨¸öÈË£©Í¶²úÊı¾İÍ³¼Æ-»ã×Ü1117-1123.et";
-	private static String TARGET_EXCEL_SHEET_NAME = "ÖØµã²úÆ·½»Ò×Êı¾İ";
+	// ç›®æ ‡æ–‡ä»¶æ‰€åœ¨çš„åœ°å€ã€ç›®æ ‡æ–‡ä»¶åã€ç›®æ ‡æ–‡ä»¶æ‰€è¦å†™çš„sheet
+	private static String TARGET_EXCEL_ADDRESS = "E:\\å·¥ä½œç›¸å…³\\å°æ—æ—è¦ææ•°\\20161124";
+	private static String TARGET_EXCEL = "é‡‘èæœåŠ¡å¹³å°ï¼ˆä¸ªäººï¼‰æŠ•äº§æ•°æ®ç»Ÿè®¡-æ±‡æ€»1117-1123.et";
+	private static String TARGET_EXCEL_SHEET_NAME = "é‡ç‚¹äº§å“äº¤æ˜“æ•°æ®";
 	
-	// ¶ÁÈ¡sql½Å±¾²éÑ¯³öÀ´µÄÊı¾İÔ´ÎÄ¼şµØÖ·£¬¼°Ô´ÎÄ¼şÃû
-	private static String SQL_ADDRESS = "E:\\¹¤×÷Ïà¹Ø\\Ğ¡ÁÖÁÖÒªÌáÊı\\20161124\\kk";
+	// è¯»å–sqlè„šæœ¬æŸ¥è¯¢å‡ºæ¥çš„æ•°æ®æºæ–‡ä»¶åœ°å€ï¼ŒåŠæºæ–‡ä»¶å
+	private static String SQL_ADDRESS = "E:\\å·¥ä½œç›¸å…³\\å°æ—æ—è¦ææ•°\\20161124\\kk";
 	private static String SQL_FORBCDE = "kk_20161124.out";
 	private static String[] SQL_FORP = {"kk_20161124_5.out", "kk_20161124_6.out", "kk_20161124_7.out", "kk_20161124_8.out"};
 	
@@ -37,7 +37,7 @@ public class GetDataByTxt {
 	public static void main(String[] args) {
 		long beginTime = System.currentTimeMillis();
 		try {
-			// Í³¼ÆSQL_FORBCDEÖĞµÄÊıÖµµ½listBCDEÖĞ
+			// ç»Ÿè®¡SQL_FORBCDEä¸­çš„æ•°å€¼åˆ°listBCDEä¸­
 			BufferedReader brForBCDE = new BufferedReader(new InputStreamReader(new FileInputStream(SQL_ADDRESS + FILE_SEPARATOR + SQL_FORBCDE)));
 			String temp = null;
 			List listBCDE = new ArrayList<String>();
@@ -52,20 +52,20 @@ public class GetDataByTxt {
 			}
 			brForBCDE.close();
 			
-			// Ğ´ÈëÄ¿±êÎÄ¼şÖĞµÄBCDEÁĞ, ¹ÊÌìÊı¿ÉÒÔÍ¨¹ı  ×Ü¼ÇÂ¼Êı/Òª¼ÇÂ¼µÄÁĞÊı   Ëã³öÌìÊı
+			// å†™å…¥ç›®æ ‡æ–‡ä»¶ä¸­çš„BCDEåˆ—, æ•…å¤©æ•°å¯ä»¥é€šè¿‡  æ€»è®°å½•æ•°/è¦è®°å½•çš„åˆ—æ•°   ç®—å‡ºå¤©æ•°
 			int size = listBCDE.size();
 			int days = size / 4;
-			System.out.println(SQL_FORBCDE + "ÖĞ¹²ÓĞ£º" + size + "Ìõ¼ÇÂ¼, ÄúÍ³¼ÆµÄÌìÊıÎª£º" + days + "Ìì, ÇëºË¶Ô");
+			System.out.println(SQL_FORBCDE + "ä¸­å…±æœ‰ï¼š" + size + "æ¡è®°å½•, æ‚¨ç»Ÿè®¡çš„å¤©æ•°ä¸ºï¼š" + days + "å¤©, è¯·æ ¸å¯¹");
 			Workbook target = new HSSFWorkbook(new FileInputStream(TARGET_EXCEL_ADDRESS + FILE_SEPARATOR + TARGET_EXCEL));
 			Sheet targetSheet = target.getSheet(TARGET_EXCEL_SHEET_NAME);
 			for(int num = 0; num < days; num++) {
 				for(int i = 0; i < 4; i++) {
-					// ½«¼ÆËã³öµÄÊı¾İĞ´Èëµ½Ä¿±êÎÄ¼şÖĞµÄ¸öÈËÍøÒøB¡¢¸öÈËÕÆÒøC¡¢×¢²áÁ¿D¡¢ÈítokenĞÂÇ©Ô¼EµÄ4¸öÁĞ±íÖĞ
+					// å°†è®¡ç®—å‡ºçš„æ•°æ®å†™å…¥åˆ°ç›®æ ‡æ–‡ä»¶ä¸­çš„ä¸ªäººç½‘é“¶Bã€ä¸ªäººæŒé“¶Cã€æ³¨å†Œé‡Dã€è½¯tokenæ–°ç­¾çº¦Eçš„4ä¸ªåˆ—è¡¨ä¸­
 					try {
 						targetSheet.getRow(2 + num).createCell(1 + i).setCellValue(listBCDE.get(4 * num + i).toString());
 						target.write(new FileOutputStream(TARGET_EXCEL_ADDRESS + FILE_SEPARATOR + TARGET_EXCEL));
 					} catch (FileNotFoundException e) {
-						System.out.println("Çë¹Ø±Õ" + TARGET_EXCEL + "ÔÚ½øĞĞ²Ù×÷£¡");
+						System.out.println("è¯·å…³é—­" + TARGET_EXCEL + "åœ¨è¿›è¡Œæ“ä½œï¼");
 						e.printStackTrace();
 						System.exit(0);
 					} catch (IOException e) {
@@ -73,9 +73,9 @@ public class GetDataByTxt {
 					}
 				}
 			}
-			System.out.println("Ğ¡ÁÖÁÖÒª¶ÁÊıµÄB¡¢C¡¢D¡¢EÁĞÒÑĞ´Èë¡£");
+			System.out.println("å°æ—æ—è¦è¯»æ•°çš„Bã€Cã€Dã€Eåˆ—å·²å†™å…¥ã€‚");
 			
-			//Í³¼ÆSQL_FORPÖĞµÄĞèÒª¼ÇÂ¼µ½listPÖĞ
+			//ç»Ÿè®¡SQL_FORPä¸­çš„éœ€è¦è®°å½•åˆ°listPä¸­
 			List<BigDecimal> listP = new ArrayList<BigDecimal>();
 			for(String str : SQL_FORP) {
 				BufferedReader brForP = new BufferedReader(new InputStreamReader(new FileInputStream(SQL_ADDRESS + FILE_SEPARATOR + str)));
@@ -93,11 +93,11 @@ public class GetDataByTxt {
 				brForP.close();
 			}
 			
-			//½«¶ÁÈ¡µÄÊı¾İĞ´Èëµ½Ä¿±êÎÄ¼şµÄÍøÒø¶Ë½»Ò×¶îPÁĞÖĞ
+			//å°†è¯»å–çš„æ•°æ®å†™å…¥åˆ°ç›®æ ‡æ–‡ä»¶çš„ç½‘é“¶ç«¯äº¤æ˜“é¢Påˆ—ä¸­
 			int sizeListP = listP.size();
-			System.out.println(SQL_FORP[0] + "ÖĞ¹²ÓĞ£º" + sizeListP / SQL_FORP.length + "—lÓ›ä›, ÄúÍ³¼ÆµÄ×Ü¼ÇÂ¼ÊıÎª£º" + sizeListP + "Ìõ");
+			System.out.println(SQL_FORP[0] + "ä¸­å…±æœ‰ï¼š" + sizeListP / SQL_FORP.length + "æ¢è¨˜éŒ„, æ‚¨ç»Ÿè®¡çš„æ€»è®°å½•æ•°ä¸ºï¼š" + sizeListP + "æ¡");
 			for(int num = 0; num < days; num++) {
-				// ¶ÁÈ¡¸¨ÖúÖĞµÚ5£¬6£¬7£¬8Êı¾İ¿â£¬¹ÊÕâÀïÎª4
+				// è¯»å–è¾…åŠ©ä¸­ç¬¬5ï¼Œ6ï¼Œ7ï¼Œ8æ•°æ®åº“ï¼Œæ•…è¿™é‡Œä¸º4
 				BigDecimal db = new BigDecimal("0.0");
 				for(int i = 0; i < 4; i++) {
 					db = db.add(listP.get(i * days + num));
@@ -106,21 +106,21 @@ public class GetDataByTxt {
 					targetSheet.getRow(2 + num).createCell(15).setCellValue(db.toString());
 					target.write(new FileOutputStream(TARGET_EXCEL_ADDRESS + FILE_SEPARATOR + TARGET_EXCEL));
 				} catch (FileNotFoundException e) {
-					System.out.println("Çë¹Ø±Õ" + TARGET_EXCEL + "ÔÚ½øĞĞ²Ù×÷£¡");
+					System.out.println("è¯·å…³é—­" + TARGET_EXCEL + "åœ¨è¿›è¡Œæ“ä½œï¼");
 					e.printStackTrace();
 					System.exit(0);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			System.out.println("Ğ¡ÁÖÁÖÒª¶ÁÊıµÄPÁĞÒÑĞ´Èë¡£");
+			System.out.println("å°æ—æ—è¦è¯»æ•°çš„Påˆ—å·²å†™å…¥ã€‚");
 		} catch (FileNotFoundException e) {
-			System.out.println("ÎÄ¼ş²»´æÔÚ");
+			System.out.println("æ–‡ä»¶ä¸å­˜åœ¨");
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		long endTime = System.currentTimeMillis();
-		System.out.println("Ğ´Èë³É¹¦£¡ÓÃÊ±£º" + (endTime - beginTime) / 1000.0 + "Ãë");
+		System.out.println("å†™å…¥æˆåŠŸï¼ç”¨æ—¶ï¼š" + (endTime - beginTime) / 1000.0 + "ç§’");
 	}
 }

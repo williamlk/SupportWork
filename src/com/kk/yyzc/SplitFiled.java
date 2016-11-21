@@ -1,13 +1,13 @@
 package com.kk.yyzc;
 
 /**
- *  ‰»Î∞¥’’“ª∂®±Í÷æ∏Ùø™µƒ±Ì◊÷∂ŒÕ∑≤ø“‘º∞“ªÃıº«¬º£¨ ‰≥ˆ◊÷∂Œ∂‘”¶µƒº«¬º
- * ¿˝»Á£∫
- *  ‰»Î£∫test|test1|test2     K1|K2|3  test
- *  ‰≥ˆ£∫
- * test--->k1
- * test1--->k2
- * test2--->k3
+ * ËæìÂÖ•ÊåâÁÖß‰∏ÄÂÆöÊ†áÂøóÈöîÂºÄÁöÑË°®Â≠óÊÆµÂ§¥ÈÉ®‰ª•Âèä‰∏ÄÊù°ËÆ∞ÂΩïÔºåËæìÂá∫Â≠óÊÆµÂØπÂ∫îÁöÑËÆ∞ÂΩï
+ * ‰æãÂ¶ÇÔºö
+ * ËæìÂÖ•Ôºötest|test1|test2     1|2|3
+ * ËæìÂá∫Ôºö
+ * test--->1
+ * test1--->2
+ * test2--->3
  * @author kk
  *
  */
@@ -15,14 +15,14 @@ public class SplitFiled {
 	public static void main(String[] args) {
 		String files = "PROCOD|ACTNO|TRDAT|JRNNO|SEQNO|TRDAT|OWNBK|PRDNO|FRNJRN|TRTM|VCHNO|TRPROCCOD|TRBK|TRCOD|TRAMT|CSHTFR|RBIND|TRAFTBAL|ERRDAT|DBKTYP|DBKPRO|BATNO|DBKNO|APROCOD|AACNO|ABS|REM|TRCHL|TRFRM|TRPLA|ECIND|PRTIND|SUP1|SUP2|CPTPRDNO|CPTCUSNAM|TRABS|TRADDRLONG|ITMNO|CUSNO|TRINTS|TRTAX|CUSLVL|RATTYP|EXECRAT|BASERAT|RATSPRD|RATFLT|BKRATTYP|FLTAMT|REM1|TRPSG|FEEFLAG|VATTXT|TMSTP";
 		
-		String records = "23|407001100330262|20141205|331501293|01|20141205||6228461190002015214||092501|TS080027|23|9999|0|-0000000000500000.00|1|0|0000000000006972.11||0||00|0|23|999901910000027|ËΩ¨ÊîØ||EBNK||9999|0|1||| | | | | | | | | | | | | | | | | | | | | ";
+		String records = "23|407001100330262|20141205|331501293|01|20141205||6228461190002015214||092501|TS080027|23|9999|0|-0000000000500000.00|1|0|0000000000006972.11||0||00|0|23|999901910000027|ÊùûÓÑÅÊïÆ||EBNK||9999|0|1||| | | | | | | | | | | | | | | | | | | | | ";
  	
 		String[] filesArray = files.split("\\|");
 		String[] recordsArray = records.split("\\|");
 		
 		if(filesArray.length != recordsArray.length) {
-			System.out.println("º«¬º ˝”Î±Ì◊÷∂Œ ˝≤ª∑˚£°");
-			System.out.println("±Ì◊÷∂Œ ˝£∫" + filesArray.length + "  º«¬º∏ˆ ˝£∫" + recordsArray.length);
+			System.out.println("ËÆ∞ÂΩïÊï∞‰∏éË°®Â≠óÊÆµÊï∞‰∏çÁ¨¶ÔºÅ");
+			System.out.println("Ë°®Â≠óÊÆµÊï∞Ôºö" + filesArray.length + "  ËÆ∞ÂΩï‰∏™Êï∞Ôºö" + recordsArray.length);
 		} else {
 			for(int i = 0; i < filesArray.length; i++) {
 				System.out.println(filesArray[i].toLowerCase() + "--->" + recordsArray[i]);
