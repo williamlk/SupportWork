@@ -3,11 +3,11 @@ package com.kk.yyzc;
 /**
  * 输入按照一定标志隔开的表字段头部以及一条记录，输出字段对应的记录
  * 例如：
- * 输入：test|test1|test2     1|2|3
+ * 输入：test|test1|test2     k1|k2|k3
  * 输出：
- * test--->1
- * test1--->2
- * test2--->3
+ * test--->k1
+ * test1--->k2
+ * test2--->k3
  * @author kk
  *
  */
