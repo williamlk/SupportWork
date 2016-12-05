@@ -64,8 +64,8 @@ public class WriteDataToExcel {
 				System.exit(0);
 			}
 		} catch (IOException e) {
+			System.out.println("俺出现问题了，请找堃堃--68");
 			e.printStackTrace();
-			System.out.println("有问题找堃堃");
 		}
 		
 		File files = new File(project_dir);
@@ -122,11 +122,12 @@ public class WriteDataToExcel {
 		InputStream fis = null;
 		FileOutputStream fos = null;
 		try {
-			TARGET_EXCEL_ADDRESS = project_dir + "\\金融服务平台（个人）投产数据统计-汇总" 
-					+ startDate + "-" + endDate + ".et";
-			fis = WriteDataToExcel.class.getResourceAsStream("金融服务平台（个人）投产数据统计-汇总xxxx-xxxx.et");
-			//System.out.println(DirTest.class.getResource("金融服务平台（个人）投产数据统计-汇总xxxx-xxxx.et").getPath());
 			
+			TARGET_EXCEL_ADDRESS = MessageFormat.format("{0}{1}金融服务平台（个人）投产数据统计-汇总{2}-{3}.et", 
+															project_dir, FILE_SEPARATOR, startDate, endDate); 
+			// 使用ClassLoader加载jar中的资源文件                                                           
+			fis = WriteDataToExcel.class.getResourceAsStream("金融服务平台（个人）投产数据统计-汇总xxxx-xxxx.et");
+			//System.out.println(WriteDataToExcel.class.getResource("金融服务平台（个人）投产数据统计-汇总xxxx-xxxx.et").getPath());
 			fos = new FileOutputStream(new File(TARGET_EXCEL_ADDRESS));
 			byte[] b = new byte[1024];
 			while(fis.read(b) != -1) {
@@ -135,15 +136,15 @@ public class WriteDataToExcel {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("俺出现问题了，请找堃堃协助解决 -- 139");
 			e.printStackTrace();
-			System.out.println("有问题找堃堃");
 		} finally {
 			try {
 				if (fis != null) { fis.close(); }
 				if (fos != null) { fos.close(); }
 			} catch (IOException e) {
+				System.out.println("俺出现问题了，请找堃堃协助解决 -- 146");
 				e.printStackTrace();
-				System.out.println("有问题找堃堃");
 			}
 		}
 	}
@@ -244,8 +245,8 @@ public class WriteDataToExcel {
 				e.printStackTrace();
 				System.exit(0);
 			} catch (IOException e) {
+				System.out.println("有问题找堃堃 -- 248");
 				e.printStackTrace();
-				System.out.println("有问题找堃堃");
 				System.exit(0);
 			}
 		}
